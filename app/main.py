@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+# from app.routers import laboratorios Próximas Tasks
+from app.routers import reserva_router
 
 app = FastAPI(
     title="Sistema de Reserva de Laboratórios",
@@ -6,6 +8,8 @@ app = FastAPI(
     version="1.0.0",
 )
 
+# app.include_router(laboratorios.router) Próximas Tasks
+app.include_router(reserva_router.router)
 
 @app.get("/")
 def root():
