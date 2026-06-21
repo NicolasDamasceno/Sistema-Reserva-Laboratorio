@@ -9,5 +9,27 @@
     "status": "cancelada",
     "justificativa": "Lab Disponivel",
     "data_cancelamento": "2026-06-17"
+  },
+  {
+    "id": "17caaa66-d03b-4450-b2e0-d755456fde3f",
+    "laboratorio_id": "Laboratório de Informática",
+    "solicitante": "string",
+    "data": "7824-94-79",
+    "hora_inicio": "24:95",
+    "hora_fim": "58:45",
+    "status": "pendente",
+    "justificativa": null,
+    "data_cancelamento": null
+  },
+  {
+    "id": "d864f6d8-4de1-4ceb-bc6f-c855d0a18a27",
+    "laboratorio_id": "Laboratório de Informática",
+    "solicitante": "string",
+    "data": "7824-94-79",
+    "hora_inicio": "24:95",
+    "hora_fim": "58:45",
+    "status": "pendente",
+    "justificativa": null,
+    "data_cancelamento": null
   }
 ]

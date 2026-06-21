@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, status
-from app.services.laboratorio_service import LaboratorioService
+from app.services.laboratorio_services import LaboratorioService
 from app.repositories.laboratorio_repo import LaboratorioRepository
 from app.schemas.laboratorio_schema import LaboratorioCriar, LaboratorioResposta
 from app.exceptions.custom_exceptions import NomeDuplicado
