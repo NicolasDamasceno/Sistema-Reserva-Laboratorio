@@ -1,8 +1,14 @@
 from fastapi import APIRouter, HTTPException, status
 from app.services.laboratorio_services import LaboratorioService
 from app.repositories.laboratorio_repo import LaboratorioRepository
-from app.schemas.laboratorio_schema import LaboratorioCriar, LaboratorioResposta
-from app.exceptions.custom_exceptions import NomeDuplicado
+from app.schemas.laboratorio_schema import(
+    LaboratorioCriar, 
+    LaboratorioAtualizar, 
+    LaboratorioResposta)
+
+from app.exceptions.custom_exceptions import (
+    NomeDuplicado,
+    LaboratorioNaoEncontrado)
 
 router = APIRouter(prefix='/laboratorios', tags=['Laboratórios'])
 service = LaboratorioService(LaboratorioRepository())
@@ -19,3 +25,36 @@ def cadastrar_laboratorio(dados: LaboratorioCriar):
 def listar_laboratorios():
     labs = service.listar()
     return [LaboratorioResposta(**l.to_dict()) for l in labs]
+
+@router.get('/{id}', response_model=LaboratorioResposta)
+def buscar_laboratorio(id: str):
+    try:
+        lab = service.buscar(id)
+        return LaboratorioResposta(**lab.to_dict())
+    except LaboratorioNaoEncontrado as e:
+        raise HTTPException(
+            status_code=404,
+            detail=str(e)
+        )
+
+
+@router.put('/{id}', response_model=LaboratorioResposta)
+def atualizar_laboratorio(
+    id: str,
+    dados: LaboratorioAtualizar
+):
+    try:
+        lab = service.atualizar(id, dados)
+        return LaboratorioResposta(**lab.to_dict())
+
+    except LaboratorioNaoEncontrado as e:
+        raise HTTPException(
+            status_code=404,
+            detail=str(e)
+        )
+
+    except NomeDuplicado as e:
+        raise HTTPException(
+            status_code=409,
+            detail=str(e)
+        )
