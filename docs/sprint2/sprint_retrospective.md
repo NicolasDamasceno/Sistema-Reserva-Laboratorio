@@ -15,5 +15,5 @@
 
 ## Ações para a Sprint 3
 - Marcos e Nicolas priorizam repositórios e routers antes de qualquer nova feature
-- Definir data/hora fixa para daily (mesmo que por WhatsApp)
+- Definir horário fixo para a reunião diária 
 - Iniciar testes unitários dos services já implementados

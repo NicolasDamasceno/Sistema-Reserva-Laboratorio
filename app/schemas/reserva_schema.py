@@ -8,14 +8,16 @@ from app.models.reserva import StatusReserva
 class ReservaCriar(BaseModel):
     laboratorio_id: str
     solicitante: str = Field(..., min_length=2)
-    data: date = Field(..., pattern=r'^\d{4}-\d{2}-\d{2}$')
+    data: str = Field(..., pattern=r'^\d{4}-\d{2}-\d{2}$')
     hora_inicio: str = Field(..., pattern=r'^\d{2}:\d{2}$')
     hora_fim: str = Field(..., pattern=r'^\d{2}:\d{2}$')
 
     @field_validator("data")
     @classmethod
-    def validar_data(cls, valor):
-        if valor < date.today():
+    def validar_data(cls, valor: str):
+        from datetime import date
+        data_obj = date.fromisoformat(valor)
+        if data_obj < date.today():
             raise ValueError("A reserva não pode ser feita para uma data passada.")
         return valor
 
