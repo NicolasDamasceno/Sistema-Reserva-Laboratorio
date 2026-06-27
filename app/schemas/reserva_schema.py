@@ -55,3 +55,7 @@ class ReservaResposta(BaseModel):
     status: StatusReserva
     justificativa: Optional[str] = None
     data_cancelamento: Optional[str] = None
+    data_hora_solicitacao: Optional[str] = None
+
+class CancelarReserva(BaseModel):
+    solicitante: str = Field(description="Nome do solicitate que deseja cancelar")

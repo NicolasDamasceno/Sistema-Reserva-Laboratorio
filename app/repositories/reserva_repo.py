@@ -1,5 +1,6 @@
 import json
 import uuid
+from datetime import datetime
 from pathlib import Path
 from app.models.reserva import Reserva
 
@@ -30,6 +31,7 @@ class ReservaRepository:
     def salvar(self, reserva: Reserva) -> Reserva:
         reservas = self._load()
         reserva.id = str(uuid.uuid4())
+        reserva.data_hora_solicitacao = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
         reservas.append(reserva)
         self._save(reservas)
         return reserva
