@@ -32,8 +32,6 @@ class ReservaService:
             raise LaboratorioNaoEncontrado('Laboratório não encontrado.')
         if lab.status != StatusLaboratorio.ATIVO:
             raise OperacaoNaoPermitida('Laboratório inativo não aceita reservas.')
-        if dados.hora_fim <= dados.hora_inicio:
-            raise OperacaoNaoPermitida('Hora de fim deve ser após hora de início.')
         if self._verificar_conflito(dados.laboratorio_id, dados.data,
                                     dados.hora_inicio, dados.hora_fim):
             raise ConflitoDeHorario('Já existe reserva aprovada neste horário.')
