@@ -33,6 +33,6 @@ A priorização seguiu a dependência funcional entre as histórias:
 | Criar schemas de reserva                | 2      | Marcos       |
 | Criar service de reservas               | 2      | Guilherme    |
 | Criar router de reservas                | 2      | Marcos       |
-| Documentar SOLID e padrões de projeto   | 2      | Nicole       |
+| Documentar SOLID e padrões de projeto   | 2      | Guilherme       |
 | Escrever testes automatizados           | 3      | Nicolas      |
-| Relatório final                         | 3      | Nicole       |
+| Relatório final                         | 3      | Marcos       |
